@@ -1,3 +1,5 @@
+const BASE = import.meta.env.BASE_URL;
+
 export interface AvatarPreset {
   id: string;
   label: string;
@@ -29,12 +31,12 @@ export const COMPANY_OPTIONS: { value: CompanyEntity; label: string; invoiceText
 ];
 
 export const AVATAR_PRESETS: AvatarPreset[] = [
-  { id: 'bb-happy', label: 'Best Fiends - Happy', path: '/avatars/bb-happy.png' },
-  { id: 'cc-professor', label: 'Cookie Cats - Professor', path: '/avatars/cc-professor.png' },
-  { id: 'cc-rita', label: 'Cookie Cats - Rita', path: '/avatars/cc-rita.png' },
-  { id: 'lg-lily', label: "Lily's Garden - Lily", path: '/avatars/lg-lily.png' },
-  { id: 'pm-captain', label: 'Pirate Masters - Captain', path: '/avatars/pm-captain.png' },
-  { id: 'sc-eating', label: "Simon's Cat - Eating", path: '/avatars/sc-eating.png' },
+  { id: 'bb-happy', label: 'Best Fiends - Happy', path: `${BASE}avatars/bb-happy.png` },
+  { id: 'cc-professor', label: 'Cookie Cats - Professor', path: `${BASE}avatars/cc-professor.png` },
+  { id: 'cc-rita', label: 'Cookie Cats - Rita', path: `${BASE}avatars/cc-rita.png` },
+  { id: 'lg-lily', label: "Lily's Garden - Lily", path: `${BASE}avatars/lg-lily.png` },
+  { id: 'pm-captain', label: 'Pirate Masters - Captain', path: `${BASE}avatars/pm-captain.png` },
+  { id: 'sc-eating', label: "Simon's Cat - Eating", path: `${BASE}avatars/sc-eating.png` },
 ];
 
 export interface SignatureData {
@@ -60,7 +62,7 @@ export const DEFAULT_SIGNATURE_DATA: SignatureData = {
   phone: '+1 (987) 654-3210',
   showHiringBanner: true,
   hiringUrl: 'https://tactilegames.com/careers',
-  profileImageUrl: '/avatars/pm-captain.png',
+  profileImageUrl: `${BASE}avatars/pm-captain.png`,
   linkedinUrl: 'https://linkedin.com/in/lilyroberts',
   barColor: '#5B21B6',
   tactileIconUrl: '',

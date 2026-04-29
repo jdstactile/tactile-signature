@@ -23,7 +23,7 @@ export function SignaturePage() {
           backgroundColor: '#ffffff',
         }}
       >
-        <img src="/tactile-t.png" alt="Tactile" width={32} height={32} />
+        <img src={`${import.meta.env.BASE_URL}tactile-t.png`} alt="Tactile" width={32} height={32} />
         <Typography variant="h-5">Tactile Signature</Typography>
       </Box>
       <Divider />
