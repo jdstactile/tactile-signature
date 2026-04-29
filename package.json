@@ -1,0 +1,34 @@
+{
+  "name": "tactile-signature",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tsc": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@emotion/cache": "11.11.0",
+    "@emotion/react": "11.11.4",
+    "@emotion/styled": "11.11.5",
+    "@mui/icons-material": "7.1.1",
+    "@mui/material": "7.1.2",
+    "@tactileentertainment/core-designsystem": "0.7.18",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-helmet-async": "1.3.0"
+  },
+  "devDependencies": {
+    "@svgr/rollup": "8.1.0",
+    "@types/node": "^20.19.0",
+    "@types/react": "18.2.42",
+    "@types/react-dom": "18.2.17",
+    "@vitejs/plugin-react": "4.7.0",
+    "typescript": "5.9.2",
+    "vite": "7.3.1",
+    "vite-plugin-checker": "0.9.1",
+    "vite-tsconfig-paths": "5.1.4"
+  }
+}
