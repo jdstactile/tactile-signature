@@ -15,8 +15,13 @@ export function MediaSocialTab({ data, onChange }: MediaSocialTabProps) {
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const file = event.target.files?.[0];
       if (!file) return;
-      const objectUrl = URL.createObjectURL(file);
-      onChange({ profileImageUrl: objectUrl });
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (typeof reader.result === 'string') {
+          onChange({ profileImageUrl: reader.result });
+        }
+      };
+      reader.readAsDataURL(file);
     },
     [onChange],
   );
@@ -129,12 +134,15 @@ export function MediaSocialTab({ data, onChange }: MediaSocialTabProps) {
         <TextField
           label="Or enter image URL"
           value={
-            AVATAR_PRESETS.some((a) => a.path === data.profileImageUrl) ? '' : data.profileImageUrl
+            AVATAR_PRESETS.some((a) => a.path === data.profileImageUrl) ||
+            data.profileImageUrl.startsWith('data:')
+              ? ''
+              : data.profileImageUrl
           }
           onChange={(e) => onChange({ profileImageUrl: e.target.value })}
           placeholder="https://example.com/photo.jpg"
           fullWidth
-          helperText="For email, use a publicly accessible URL. Local files and uploads are preview-only."
+          helperText="Uploaded images are embedded as base64. Gmail re-hosts them automatically when pasted via 'Copy for Gmail'."
         />
       </Box>
 
