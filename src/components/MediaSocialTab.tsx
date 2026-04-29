@@ -15,13 +15,21 @@ export function MediaSocialTab({ data, onChange }: MediaSocialTabProps) {
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const file = event.target.files?.[0];
       if (!file) return;
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (typeof reader.result === 'string') {
-          onChange({ profileImageUrl: reader.result });
-        }
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 200;
+        canvas.height = 200;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+        const size = Math.min(img.width, img.height);
+        const sx = (img.width - size) / 2;
+        const sy = (img.height - size) / 2;
+        ctx.drawImage(img, sx, sy, size, size, 0, 0, 200, 200);
+        onChange({ profileImageUrl: canvas.toDataURL('image/jpeg', 0.8) });
+        URL.revokeObjectURL(img.src);
       };
-      reader.readAsDataURL(file);
+      img.src = URL.createObjectURL(file);
     },
     [onChange],
   );
